@@ -23,4 +23,4 @@ Write your elasticsearch host in place of `<es_host>`.
 
 #### Option
 
-- `--port` : You can specify the port which is used to connect elastic search
+- `--port` : Default value is set as `9200`. You can specify the port which is used to connect elastic search.
