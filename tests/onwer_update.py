@@ -1,24 +1,10 @@
-
-import os.path
 import unittest
-from importlib.machinery import SourceFileLoader
-from importlib.util import spec_from_loader, module_from_spec
+import sys
+import os.path
 
-
-def import_from_source(name, file_path):
-    loader = SourceFileLoader(name, file_path)
-    spec = spec_from_loader(loader.name, loader)
-    module = module_from_spec(spec)
-    loader.exec_module(module)
-    return module
-
-
-script_path = os.path.abspath(
-    os.path.join(
-        os.path.dirname(os.path.abspath(__file__)), "..",
-        "bin", "owner_update_1_7_18.py")
-)
-binscript = import_from_source("owner_update_1_7_18.py", script_path)
+sys.path.append(os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__))))
+from bin import owner_update_1_7_18 as binscript  # noqa # pylint: disable=import-error
 
 
 class TestConvertingOwnerURI(unittest.TestCase):
